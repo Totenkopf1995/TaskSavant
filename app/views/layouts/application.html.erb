@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tasksavant</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-[url('logo.png')] bg-cover bg-center h-screen">
+<!--  <body class="m-10 bg-black text-white">-->
+<!--  <body class="m-10 bg-gradient-to-b from-cyan-800 to-blue-800 text-white">-->
+    <header>
+      <%= render 'shared/header' %>
+      <%#= image_tag 'logo.png', alt: 'Logo de la aplicación', class: 'w-full h-[500px]' %>
+    </header>
+
+    <main>
+      <%= yield %>
+      <%= render 'shared/description' %>
+    </main>
+
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
+  </body>
+</html>

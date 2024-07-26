@@ -1,0 +1,38 @@
+<div class="flex  m-10 text-white">
+  <h2>Acceso</h2>
+</div>
+
+<div class="flex  m-10 text-black">
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :Correo, class: "text-white" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :contraseña, class: "text-white" %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <button class="text-white">
+          <%= f.label :Recuerdame %>
+        </button>
+
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <button class="rounded-md border-double text-white border-4 border-white">
+        <%= f.submit "Ingresar" %>
+      </button>
+    </div>
+  <% end %>
+</div>
+
+<div class="flex  m-10 gap-10">
+  <%= render "devise/shared/links" %>
+</div>

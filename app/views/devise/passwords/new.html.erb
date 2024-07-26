@@ -1,0 +1,29 @@
+<div class="flex text-white m-10">
+  <h2>¿Olvidaste tu contraseña?</h2>
+</div>
+
+<div class="flex text-white m-10">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :Coreo %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Envía instrucciones para restablecer la contraseña" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="flex  m-10 gap-10">
+  <%= render "devise/shared/links" %>
+</div>
+
+
+
+
+
+
+
