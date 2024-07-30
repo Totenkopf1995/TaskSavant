@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-[url('logo.png')] bg-cover bg-center h-screen">
+  <body class="flex flex-col min-h-screen bg-[url('logo.png')] bg-cover bg-center h-screen">
 <!--  <body class="m-10 bg-black text-white">-->
 <!--  <body class="m-10 bg-gradient-to-b from-cyan-800 to-blue-800 text-white">-->
     <header>
@@ -19,9 +19,11 @@
       <%#= image_tag 'logo.png', alt: 'Logo de la aplicación', class: 'w-full h-[500px]' %>
     </header>
 
-    <main>
+    <main class="flex-grow">
       <%= yield %>
-      <%= render 'shared/description' %>
+      <% unless user_signed_in? %>
+        <%= render 'shared/description' %>
+      <% end %>
     </main>
 
     <footer>
