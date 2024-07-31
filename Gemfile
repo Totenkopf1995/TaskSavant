@@ -80,3 +80,5 @@ gem "warden", "~> 1.2"
 
 
 gem "tailwindcss-rails", "~> 2.6"
+gem "chartkick"
+gem 'groupdate'
