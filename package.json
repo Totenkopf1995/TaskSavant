@@ -3,5 +3,8 @@
     "chart.js": "^4.4.3",
     "chartkick": "^5.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build:css": "tailwindcss build ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css"
+  }
 }
