@@ -82,3 +82,4 @@ production:
   database: tasksavant_production
   username: tasksavant
   password: <%= ENV["TASKSAVANT_DATABASE_PASSWORD"] %>
+  url: <%= ENV["TASKSAVANT_DATABASE_URL"] %>
