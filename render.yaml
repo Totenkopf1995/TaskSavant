@@ -1,0 +1,23 @@
+databases:
+  - name: tasksavant_production
+    databaseName: tasksavant_production
+    user: tasksavant
+    plan: free
+
+services:
+  - type: web
+    name: tasksavant_production
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tasksavant_production
+          property: connectionString
+      - key: dcd10dc3da25e567e910652d479a7f98
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
