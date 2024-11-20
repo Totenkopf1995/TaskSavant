@@ -80,6 +80,6 @@ test:
 production:
   <<: *default
   database: tasksavant_production
-  username: tasksavant
+  username: pepe
   password: <%= ENV["TASKSAVANT_DATABASE_PASSWORD"] %>
   url: <%= ENV["TASKSAVANT_DATABASE_URL"] %>

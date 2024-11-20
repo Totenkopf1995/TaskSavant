@@ -25,7 +25,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to task_url(@task), notice: "La tarea se creó correctamente." }
+        format.html { redirect_to tasks_path, notice: "La tarea se creó correctamente." }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to task_url(@task), notice: "La tarea se actualizó exitosamente." }
+        format.html { redirect_to tasks_path, notice: "La tarea se actualizó exitosamente." }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class TasksController < ApplicationController
     @task.destroy!
 
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: "La tarea fue destruida exitosamente." }
+      format.html { redirect_to tasks_path}
       format.json { head :no_content }
     end
   end
