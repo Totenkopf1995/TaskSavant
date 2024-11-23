@@ -1,13 +1,17 @@
-<div class="w-full ">
+<div class=" m-10">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+      <%= notice %>
+    </p>
   <% end %>
 
   <% content_for :title, "Tasks" %>
 
   <div class="flex justify-between items-center mb-10 mr-4">
     <h1 class="font-bold text-4xl text-white">Tasks</h1>
-    <%= link_to "Nueva tarea", new_task_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to "Nueva tarea", new_task_path,
+                class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+    %>
   </div>
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -41,10 +45,19 @@
           <td class="px-6 py-4">
             <%= task.completed ? "Completada" : "No completada" %> <!-- Muestra si la tarea está completada -->
           </td>
+
           <td class="px-6 py-4 text-right">
-            <%= link_to "Editar", edit_task_path(task), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
-            <%= button_to "Destruir", task, method: :delete, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+            <div class="flex space-x-6">
+              <%= link_to "Editar", edit_task_path(task),
+                          class: "font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              %>
+              <%= button_to "Destruir", task, method: :delete,
+                          class: "font-medium text-red-600 dark:text-red-500 hover:underline",
+                          data: { turbo_confirm: "¿Estás seguro de que quieres eliminar esta tarea?" }
+              %>
+            </div>
           </td>
+
         </tr>
       <% end %>
       </tbody>

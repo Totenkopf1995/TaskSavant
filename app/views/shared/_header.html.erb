@@ -1,19 +1,32 @@
 <nav class="bg-black">
   <div class="flex justify-between items-center text-white mx-10 py-5">
-    <%= link_to 'Inicio', root_path %>
-    <%#= link_to 'tareas', tasks_path %>
-    <ul class="flex gap-10">
-      <% if user_signed_in? %>
-        <button>
-          <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, data: { confirm: '¿Estás seguro de que quieres cerrar sesión?' } %></li>
+
+    <div class="inline-flex rounded-md shadow-sm" role="group">
+      <% if !user_signed_in? %>
+        <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+          <%= link_to 'Inicio', root_path %>
         </button>
       <% else %>
-        <button class="rounded-md border-double text-white border-4 border-white">
-          <li><%= link_to 'Iniciar sesión', new_user_session_path %></li>
+        <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+          <%= link_to 'Tareas', tasks_path %>
         </button>
-        <button class="rounded-md text-black bg-white">
-          <li><%= link_to 'Registrarse', new_user_registration_path %></li>
+      <% end %>
+    </div>
+
+    <ul class="flex gap-10">
+      <% if user_signed_in? %>
+        <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+          <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, data: { turbo_confirm: '¿Estás seguro de que quieres cerrar sesión?' }, class: 'w-full h-full' %>
         </button>
+      <% else %>
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+          <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+            <%= link_to 'Iniciar sesión', new_user_session_path %>
+          </button>
+          <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+            <%= link_to 'Registrarse', new_user_registration_path %>
+          </button>
+        </div>
       <% end %>
     </ul>
   </div>
