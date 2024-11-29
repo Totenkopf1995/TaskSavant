@@ -27,7 +27,10 @@
   </div>
 
   <div class="inline">
-    <%= form.submit "Guardar", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Guardar",
+                    class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
+                    onclick: "confirmSave(event, this)"
+    %>
   </div>
 
   <%= link_to "Volver", tasks_path,
@@ -35,3 +38,34 @@
   %>
 
 <% end %>
+
+
+<script>
+    function confirmSave(event, element) {
+        event.preventDefault();
+        const form = element.closest('form');
+
+        if (!form) {
+            console.error("No se encontró el formulario.");
+            return;
+        }
+
+        Swal.fire({
+            title: '¿Estás seguro?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, Guardar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit(); // Solo se envía si el usuario confirma
+                Swal.fire(
+                    '¡Eliminado!',
+                    'Tu tarea ha sido eliminada.',
+                    'success'
+                );
+            }
+        });
+    }
+</script>
